@@ -5,8 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Release Info
 
 - Online Shop Template Integration -- Done
-- Search for products by category -- Working
-- Search for products by text box -- Pending
+- Search for products by category -- Done
+- Search for products by keyword -- Working
 - Master / detail view of products -- Pending
 - Add products to shopping cart (CRUD) -- Pending
 - Shopping cart check out -- Pending

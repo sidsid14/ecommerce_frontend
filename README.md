@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
+## Release Info
+
+- Online Shop Template Integration
+- Search for products by category
+- Search for products by text box
+- Master / detail view of products
+- Add products to shopping cart (CRUD)
+- Shopping cart check out
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

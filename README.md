@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Search for products by keyword -- Done
 - Master / detail view of products -- Done
 - Pagination -- Done
-- Add products to shopping cart (CRUD) -- Workin
+- Add products to shopping cart (CRUD) -- Working
 - Shopping cart check out -- Pending
 
 ## Development server

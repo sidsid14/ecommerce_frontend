@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Product } from 'src/app/common/product';
+import { GetResponseProducts, Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
   products!: Product[];
   previousCategoryId: number = 1;
+  previousKeyword: string = '';
 
   //Properties for pagination
   thePageNumber: number = 1;
@@ -39,10 +40,20 @@ export class ProductListComponent implements OnInit {
 
   handleSearchProducts() {
     const keyword = this.route.snapshot.paramMap.get('keyword');
-    if (keyword)
-      this.productService.searchProducts(keyword).subscribe((data) => {
-        this.products = data;
-      });
+    if (keyword) {
+      if (this.previousKeyword !== keyword) {
+        this.previousKeyword = keyword;
+        this.thePageNumber = 1;
+      }
+
+      this.productService
+        .searchProductsPaginate(
+          this.thePageNumber - 1,
+          this.thePageSize,
+          keyword
+        )
+        .subscribe(this.processResult());
+    }
   }
 
   handleListProducts() {
@@ -60,12 +71,16 @@ export class ProductListComponent implements OnInit {
         this.thePageSize,
         currentCategoryId
       )
-      .subscribe((data) => {
-        this.products = data._embedded.products;
-        this.thePageNumber = data.page.number + 1;
-        this.thePageSize = data.page.size;
-        this.theTotalElements = data.page.totalElements;
-      });
+      .subscribe(this.processResult());
+  }
+
+  private processResult() {
+    return (data: GetResponseProducts) => {
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
+    };
   }
 
   updatePageSize(newPageSize: number) {

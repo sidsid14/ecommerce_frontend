@@ -22,14 +22,26 @@
           No products found.
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center align-items-center">
         <div class="col-auto">
           <ngb-pagination
             [(page)]="thePageNumber"
+            [maxSize]="5"
+            [boundaryLinks]="true"
             [pageSize]="thePageSize"
             [collectionSize]="theTotalElements"
             (pageChange)="listProducts()"
           ></ngb-pagination>
+        </div>
+        <div class="col-auto">
+          <span class="ms-3 me-2">Page Size</span>
+          <select (change)="updatePageSize($any($event.target).value)">
+            <option>2</option>
+            <option selected="true">5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
         </div>
       </div>
     </div>

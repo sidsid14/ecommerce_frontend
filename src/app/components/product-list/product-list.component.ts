@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
   //Properties for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 10;
+  thePageSize: number = 5;
   theTotalElements: number = 0;
 
   constructor(
@@ -25,15 +25,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       this.listProducts();
-
-      // const id = paramMap.get('id');
-      // const keyword = paramMap.get('keyword');
-
-      // if (keyword) {
-      //   this.searchProducts(keyword);
-      // } else {
-      //   this.listProducts(id);
-      // }
     });
   }
 
@@ -75,5 +66,11 @@ export class ProductListComponent implements OnInit {
         this.thePageSize = data.page.size;
         this.theTotalElements = data.page.totalElements;
       });
+  }
+
+  updatePageSize(newPageSize: number) {
+    this.thePageSize = newPageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
   }
 }

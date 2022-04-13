@@ -10,7 +10,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Master / detail view of products -- Done
 - Pagination -- Done
 - Update Cart Status on adding items to cart -- Done
-- Add products to shopping cart (CRUD) -- Working
+- Cart Details page with inc/dec quantity and remove product functionality. --Done
+- Checkout Form --Working
+- Add products to shopping cart (CRUD) -- Pending
 - Shopping cart check out -- Pending
 
 ## Development server

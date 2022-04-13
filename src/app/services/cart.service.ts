@@ -43,6 +43,26 @@ export class CartService {
     this.logCartData(totalPriceValue, totalQuantityValue);
   }
 
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+    if (cartItem.quantity === 0) {
+      this.remove(cartItem);
+    } else {
+      this.computeCartTotals();
+    }
+  }
+
+  remove(cartIem: CartItem) {
+    const itemIndex = this.cartItems.findIndex(
+      (item) => item.id === cartIem.id
+    );
+
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.computeCartTotals();
+    }
+  }
+
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
     for (let currentCartItem of this.cartItems) {
       const subTotalPrice =

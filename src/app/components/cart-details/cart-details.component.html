@@ -27,11 +27,41 @@
             </td>
             <td>
               <div class="item">
-                <label>Quantity:</label> {{ item.quantity }}
+                <label>Quantity:</label>
+                <div class="d-flex justify-content-around py-2 px-5">
+                  <div>
+                    <button
+                      (click)="incrementQuantity(item)"
+                      class="btn btn-primary btn-sm"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <div>
+                    {{ item.quantity }}
+                  </div>
+                  <div>
+                    <button
+                      (click)="decrementQuantity(item)"
+                      class="btn btn-primary btn-sm"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <p class="mt-2">
-                Subtotal: {{ item.quantity * item.unitPrice | currency: "USD" }}
-              </p>
+              <div class="d-flex justify-content-around py-2">
+                <p class="mt-2">
+                  Subtotal:
+                  {{ item.quantity * item.unitPrice | currency: "USD" }}
+                </p>
+                <button
+                  (click)="remove(item)"
+                  class="btn btn-sm btn-danger me-4"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
             </td>
           </tr>
           <tr>

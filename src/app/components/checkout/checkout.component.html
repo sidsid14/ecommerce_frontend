@@ -60,7 +60,7 @@
               <ng-template ngbPanelContent>
                 <div class="d-flex">
                   <div formGroupName="shippingAddress" class="p-2 pe-4 w-50">
-                    <h3>Shipping Address</h3>
+                    <h3 class="mb-5">Shipping Address</h3>
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
@@ -93,32 +93,48 @@
                       class="row justify-content-center mt-2 align-items-center"
                     >
                       <div class="col-auto">
-                        <label class="form-label w-80px">State</label>
+                        <label class="form-label lbl-email w-80px"
+                          >Country</label
+                        >
                       </div>
                       <div class="col">
-                        <input
-                          class="form-control"
-                          formControlName="state"
+                        <select
+                          class="form-select"
+                          formControlName="country"
                           type="text"
-                        />
+                          (change)="getStates('shippingAddress')"
+                        >
+                          <option
+                            *ngFor="let country of countries"
+                            [ngValue]="country"
+                          >
+                            {{ country.name }}
+                          </option>
+                        </select>
                       </div>
                     </div>
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
                       <div class="col-auto">
-                        <label class="form-label lbl-email w-80px"
-                          >Country</label
-                        >
+                        <label class="form-label w-80px">State</label>
                       </div>
                       <div class="col">
-                        <input
+                        <select
                           class="form-control"
-                          formControlName="country"
+                          formControlName="state"
                           type="text"
-                        />
+                        >
+                          <option
+                            *ngFor="let shippingState of shippingAddressStates"
+                            [ngValue]="shippingState"
+                          >
+                            {{ shippingState.name }}
+                          </option>
+                        </select>
                       </div>
                     </div>
+
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
@@ -137,7 +153,19 @@
                     </div>
                   </div>
                   <div formGroupName="billingAddress" class="p-2 ps-4 w-50">
-                    <h3>Billing Address</h3>
+                    <div class="row">
+                      <div class="col-auto">
+                        <h3>Billing Address</h3>
+                      </div>
+                      <div class="col-auto py-2">
+                        <input
+                          type="checkbox"
+                          (change)="copyShippingAddressToBillingAddress($event)"
+                        />
+                        <span class="p-2">Same as shipping address</span>
+                      </div>
+                    </div>
+
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
@@ -170,30 +198,46 @@
                       class="row justify-content-center mt-2 align-items-center"
                     >
                       <div class="col-auto">
-                        <label class="form-label w-80px">State</label>
+                        <label class="form-label w-80px">Country</label>
                       </div>
                       <div class="col">
-                        <input
-                          class="form-control"
-                          formControlName="state"
+                        <select
+                          class="form-select"
+                          formControlName="country"
                           type="text"
-                        />
+                          (change)="getStates('billingAddress')"
+                        >
+                          <option
+                            *ngFor="let country of countries"
+                            [ngValue]="country"
+                          >
+                            {{ country.name }}
+                          </option>
+                        </select>
                       </div>
                     </div>
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
                       <div class="col-auto">
-                        <label class="form-label w-80px">Country</label>
+                        <label class="form-label w-80px">State</label>
                       </div>
                       <div class="col">
-                        <input
+                        <select
                           class="form-control"
-                          formControlName="country"
+                          formControlName="state"
                           type="text"
-                        />
+                        >
+                          <option
+                            *ngFor="let billingState of billingddressStates"
+                            [ngValue]="billingState"
+                          >
+                            {{ billingState.name }}
+                          </option>
+                        </select>
                       </div>
                     </div>
+
                     <div
                       class="row justify-content-center mt-2 align-items-center"
                     >
@@ -279,9 +323,9 @@
                     </div>
                     <div class="col">
                       <div class="row g-3 align-items-center">
-                        <div class="col-3">
+                        <div class="col-4">
                           <select
-                            class="form-control"
+                            class="form-select"
                             formControlName="expirationMonth"
                           >
                             <option *ngFor="let month of creditCardMonths">
@@ -292,9 +336,9 @@
                         <div class="col-1 text-center">
                           <span>/</span>
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
                           <select
-                            class="form-control"
+                            class="form-select"
                             formControlName="expirationYear"
                             (change)="handleMonthsAndYears()"
                           >

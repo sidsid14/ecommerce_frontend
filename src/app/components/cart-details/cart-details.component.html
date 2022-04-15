@@ -67,9 +67,14 @@
           <tr>
             <td colspan="2"></td>
             <td style="font-weight: bold">
-              <p>Total Quantity: {{ totalQuantity }}</p>
-              <p>Shipping: FREE</p>
-              <p>Total Price: {{ totalPrice | currency: "USD" }}</p>
+              <p class="my-1 mx-1">Total Quantity: {{ totalQuantity }}</p>
+              <p class="my-1 mx-1">Shipping: FREE</p>
+              <p class="my-1 mx-1">
+                Total Price: {{ totalPrice | currency: "USD" }}
+              </p>
+              <button routerLink="/checkout" class="btn btn-primary my-1 mx-1">
+                Checkout
+              </button>
             </td>
           </tr>
         </tbody>

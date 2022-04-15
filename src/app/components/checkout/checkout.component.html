@@ -1,0 +1,379 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+        <div class="d-flex">
+          <ngb-accordion
+            class="w-75"
+            #acc="ngbAccordion"
+            activeIds="customerDetailsPanel"
+          >
+            <ngb-panel id="customerDetailsPanel" title="Customer Details">
+              <ng-template ngbPanelContent>
+                <div formGroupName="customer" class="w-50">
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label">First Name</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="firstName"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label">Last Name</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="lastName"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-80px">Email</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="email"
+                        type="email"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Shipping/Billing Address">
+              <ng-template ngbPanelContent>
+                <div class="d-flex">
+                  <div formGroupName="shippingAddress" class="p-2 pe-4 w-50">
+                    <h3 class="mb-5">Shipping Address</h3>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">Street</label>
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="street"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">City</label>
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="city"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label lbl-email w-80px"
+                          >Country</label
+                        >
+                      </div>
+                      <div class="col">
+                        <select
+                          class="form-select"
+                          formControlName="country"
+                          type="text"
+                          (change)="getStates('shippingAddress')"
+                        >
+                          <option
+                            *ngFor="let country of countries"
+                            [ngValue]="country"
+                          >
+                            {{ country.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">State</label>
+                      </div>
+                      <div class="col">
+                        <select
+                          class="form-control"
+                          formControlName="state"
+                          type="text"
+                        >
+                          <option
+                            *ngFor="let shippingState of shippingAddressStates"
+                            [ngValue]="shippingState"
+                          >
+                            {{ shippingState.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label lbl-email w-80px"
+                          >Zipcode</label
+                        >
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="zipCode"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div formGroupName="billingAddress" class="p-2 ps-4 w-50">
+                    <div class="row">
+                      <div class="col-auto">
+                        <h3>Billing Address</h3>
+                      </div>
+                      <div class="col-auto py-2">
+                        <input
+                          type="checkbox"
+                          (change)="copyShippingAddressToBillingAddress($event)"
+                        />
+                        <span class="p-2">Same as shipping address</span>
+                      </div>
+                    </div>
+
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">Street</label>
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="street"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">City</label>
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="city"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">Country</label>
+                      </div>
+                      <div class="col">
+                        <select
+                          class="form-select"
+                          formControlName="country"
+                          type="text"
+                          (change)="getStates('billingAddress')"
+                        >
+                          <option
+                            *ngFor="let country of countries"
+                            [ngValue]="country"
+                          >
+                            {{ country.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">State</label>
+                      </div>
+                      <div class="col">
+                        <select
+                          class="form-control"
+                          formControlName="state"
+                          type="text"
+                        >
+                          <option
+                            *ngFor="let billingState of billingddressStates"
+                            [ngValue]="billingState"
+                          >
+                            {{ billingState.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div
+                      class="row justify-content-center mt-2 align-items-center"
+                    >
+                      <div class="col-auto">
+                        <label class="form-label w-80px">Zipcode</label>
+                      </div>
+                      <div class="col">
+                        <input
+                          class="form-control"
+                          formControlName="zipCode"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Payment Information">
+              <ng-template ngbPanelContent>
+                <div formGroupName="creditCard" class="w-50">
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-100px">Card Type</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="cardType"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-100px">Name on card</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="nameOnCard"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-100px">Card Number</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="cardNumber"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-100px">Security Code</label>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        formControlName="securityCode"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="row justify-content-center mt-2 align-items-center"
+                  >
+                    <div class="col-auto">
+                      <label class="form-label w-100px">Expiration</label>
+                    </div>
+                    <div class="col">
+                      <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                          <select
+                            class="form-select"
+                            formControlName="expirationMonth"
+                          >
+                            <option *ngFor="let month of creditCardMonths">
+                              {{ month }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-1 text-center">
+                          <span>/</span>
+                        </div>
+                        <div class="col-5">
+                          <select
+                            class="form-select"
+                            formControlName="expirationYear"
+                            (change)="handleMonthsAndYears()"
+                          >
+                            <option *ngFor="let year of creditCardYears">
+                              {{ year }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+          <div class="card w-25">
+            <div class="card-header text-center text-dark py-3">
+              Review Your Order
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Total Quantity: {{ totalQuantity }}
+              </li>
+              <li class="list-group-item">Shipping: FREE</li>
+              <li class="list-group-item">Total Price: {{ totalPrice }}</li>
+            </ul>
+
+            <div class="card-footer text-center py-3">
+              <button type="submit" class="btn btn-info">Purchase</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

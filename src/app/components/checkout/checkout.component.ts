@@ -8,6 +8,7 @@ import {
 import { State } from 'src/app/common/state';
 import { Country } from 'src/app/common/country';
 import { FormService } from 'src/app/services/form.service';
+import { FormValidators } from 'src/app/validators/form-validators';
 
 @Component({
   selector: 'app-checkout',
@@ -34,10 +35,12 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
         firstName: new FormControl('', [
           Validators.required,
+          FormValidators.notOnlyWhitespace,
           Validators.minLength(2),
         ]),
         lastName: new FormControl('', [
           Validators.required,
+          FormValidators.notOnlyWhitespace,
           Validators.minLength(2),
         ]),
         email: new FormControl('', [

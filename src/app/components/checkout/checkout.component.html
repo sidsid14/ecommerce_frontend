@@ -534,7 +534,7 @@
             </ngb-panel>
             <ngb-panel title="Payment Information">
               <ng-template ngbPanelContent>
-                <div formGroupName="creditCard" class="w-50">
+                <div formGroupName="creditCard" class="w-75">
                   <div
                     class="row justify-content-center mt-2 align-items-center"
                   >
@@ -557,7 +557,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-auto offset-md-2">
+                    <div class="col-auto offset-md-3">
                       <div
                         *ngIf="
                           creditCardType?.invalid &&
@@ -588,7 +588,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-auto offset-md-2">
+                    <div class="col-auto offset-md-3">
                       <div
                         *ngIf="
                           creditCardNameOnCard?.invalid &&
@@ -625,7 +625,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-auto offset-md-2">
+                    <div class="col-auto offset-md-3">
                       <div
                         *ngIf="
                           creditCardNumber?.invalid &&
@@ -660,7 +660,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-auto offset-md-2">
+                    <div class="col-auto offset-md-3">
                       <div
                         *ngIf="
                           creditCardSecurityCode?.invalid &&

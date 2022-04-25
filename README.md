@@ -11,13 +11,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Pagination -- Done
 - Update Cart Status on adding items to cart -- Done
 - Cart Details page with inc/dec quantity and remove product functionality. --Done
-- Checkout Form --Working
+- Checkout Form --Done
   1. Form Layout
   2. Dropdown List
   3. Review Cart
   4. Save the order in Database
-- Add products to shopping cart (CRUD) -- Pending
-- Shopping cart check out -- Pending
+- Add products to shopping cart (CRUD) -- Done
+- Shopping cart check out -- Done
 
 ## Development server
 

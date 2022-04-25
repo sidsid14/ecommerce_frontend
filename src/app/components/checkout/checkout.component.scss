@@ -5,3 +5,12 @@
 .w-100px{
     width:100px;
 }
+
+@media (min-width: 768px){
+    .offset-md-2 {
+        margin-left: 104px !important;
+    }
+    .offset-md-3 {
+        margin-left: 124px !important;
+    }
+}

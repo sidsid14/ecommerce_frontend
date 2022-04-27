@@ -4,20 +4,27 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Release Info
 
-- Online Shop Template Integration -- Done
-- Search for products by category -- Done
-- Search for products by keyword -- Done
-- Master / detail view of products -- Done
-- Pagination -- Done
-- Update Cart Status on adding items to cart -- Done
-- Cart Details page with inc/dec quantity and remove product functionality. --Done
-- Checkout Form --Done
-  1. Form Layout
-  2. Dropdown List
-  3. Review Cart
-  4. Save the order in Database
-- Add products to shopping cart (CRUD) -- Done
-- Shopping cart check out -- Done
+- [x] Release 1.0
+  - [x] Show a list of products
+- [x] Release 2.0
+  - [x] Online Shop Template Integration
+  - [x] Search for products by category
+  - [x] Search for products by keyword
+  - [x] Master / detail view of products
+  - [x] Pagination
+  - [x] Update Cart Status on adding items to cart
+  - [x] Cart Details page with inc/dec quantity and remove product functionality.
+  - [x] Checkout Form
+    1. Form Layout
+    2. Dropdown List
+    3. Review Cart
+    4. Save the order in Database
+  - [x] Add products to shopping cart (CRUD)
+  - [x] Shopping cart check out
+- [ ] Release 3.0
+  - [ ] User login/logout security
+  - [ ] Provide access to special VIP page only for authenticated users.
+  - [ ] Keep track of order history for registered customers.
 
 ## Development server
 

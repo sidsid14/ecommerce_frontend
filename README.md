@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
+## Instructions
+
+Rename src/environments/.environment.ts to environment.ts and environment.prod.ts
+
 ## Release Info
 
 - [x] Release 1.0

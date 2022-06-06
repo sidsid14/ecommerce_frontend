@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { environment } from 'src/environments/environment';
+import { MembersPageComponent } from './components/members-page/members-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { environment } from 'src/environments/environment';
     CheckoutComponent,
     LoginComponent,
     LoginStatusComponent,
+    MembersPageComponent,
   ],
   imports: [
     BrowserModule,

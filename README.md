@@ -27,7 +27,7 @@ Rename src/environments/.environment.ts to environment.ts and environment.prod.t
   - [x] Shopping cart check out
 - [ ] Release 3.0
   - [x] User login/logout security
-  - [ ] Provide access to special VIP page only for authenticated users.
+  - [x] Provide access to special VIP page only for authenticated users.
   - [ ] Keep track of order history for registered customers.
 
 ## Development server

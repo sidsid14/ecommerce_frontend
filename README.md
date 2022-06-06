@@ -22,7 +22,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - [x] Add products to shopping cart (CRUD)
   - [x] Shopping cart check out
 - [ ] Release 3.0
-  - [ ] User login/logout security
+  - [x] User login/logout security
   - [ ] Provide access to special VIP page only for authenticated users.
   - [ ] Keep track of order history for registered customers.
 

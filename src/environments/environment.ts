@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  oidc: {
+    clientId: '',
+    issuer: '',
+    redirectUri: 'http://localhost:4200/login/callback',
+    scopes: ['openid', 'profile', 'email'],
+  },
 };
 
 /*
